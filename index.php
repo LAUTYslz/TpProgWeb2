@@ -44,43 +44,46 @@
     </style>
 </head>
 <body>
+<main>
+    <?php
+   include_once ("components/header.php");
+    ?>
 
-<header>
-    <div>
-        <img src="img/logo.svg" alt="Logo">
-    </div>
-    <h1>Pokedex</h1>
-    <div>
-        <input type="text" placeholder="usuario">
-        <input type="text" placeholder="contraseña">
-        <input type="submit" value="Ingresar">
-    </div>
-</header>
+     <div class="container">
+            <h2>Buscar</h2>
+            <form action="/buscar" method="GET">
+                <input type="text" name="query" placeholder="Ingrese su búsqueda">
+                <br>
+                <input type="submit" value="Buscar">
+            </form>
+        </div>
 
-<table>
-    <thead>
-    <tr>
-        <th>Imagen</th>
-        <th>Tipo</th>
-        <th>Nombre</th>
-        <th>Número</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><img src="imagen1.jpg" alt="Imagen 1"></td>
-        <td>Tipo 1</td>
-        <td>Nombre 1</td>
-        <td>123456789</td>
-    </tr>
-    <tr>
-        <td><img src="imagen2.jpg" alt="Imagen 2"></td>
-        <td>Tipo 2</td>
-        <td>Nombre 2</td>
-        <td>987654321</td>
-    </tr>
-    </tbody>
-</table>
+        <table>
+            <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Tipo</th>
+                <th>Nombre</th>
+                <th>Número</th>
+            </tr>
+            </thead>
 
+            <tbody>
+            <tr>
+                <td><img src="imagen1.jpg" alt="Imagen 1"></td>
+                <td>Tipo 1</td>
+                <td>Nombre 1</td>
+                <td>123456789</td>
+            </tr>
+            <tr>
+                <td><img src="imagen2.jpg" alt="Imagen 2"></td>
+                <td>Tipo 2</td>
+                <td>Nombre 2</td>
+                <td>987654321</td>
+            </tr>
+            </tbody>
+
+        </table>
+</main>
 </body>
 </html>

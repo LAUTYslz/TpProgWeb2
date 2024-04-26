@@ -1,0 +1,1 @@
+// consultar base de datos con los pokemones y devolver una tabla con los que haya en BD.
