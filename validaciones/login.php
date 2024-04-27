@@ -10,7 +10,7 @@ if(isset($_POST["usuario"]) && $_POST["pass"]){
         $_SESSION["usuario"] = $usuario;
 
         echo "salio bien";
-        header("location:home.php");
+        header("location:../home.php");
         exit();
     }else{
     echo "SALIO MAL";

@@ -44,13 +44,15 @@
     </style>
 </head>
 <body>
-<main>
+
     <?php
     session_start();
     include_once ("./components/hearder-admin.php");
     ?>
 
-    <div class="container">
+<main>
+
+       <div class="container">
         <h2>Buscar</h2>
         <form action="/buscar" method="GET">
             <input type="text" name="query" placeholder="Ingrese su búsqueda">

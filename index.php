@@ -44,11 +44,12 @@
     </style>
 </head>
 <body>
-<main>
+
     <?php
-   include_once ("components/header.php");
+    include_once ("components/header.php");
     ?>
 
+<main>
      <div class="container">
             <h2>Buscar</h2>
             <form action="/buscar" method="GET">
