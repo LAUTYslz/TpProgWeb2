@@ -28,6 +28,7 @@ function validarUsuario($usuario, $pass)
     $servername = "localhost";
     $username = "root";
     $password = "capoTATO12";
+
     $database = "login";
 
     // Crear conexión
@@ -47,4 +48,3 @@ function validarUsuario($usuario, $pass)
     }
 }
 
-?>
