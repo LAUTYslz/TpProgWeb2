@@ -68,7 +68,7 @@
                 <th>Número</th>
             </tr>
             </thead>
-
+///
             <tbody>
             <tr>
                 <td><img src="imagen1.jpg" alt="Imagen 1"></td>
