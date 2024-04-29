@@ -28,10 +28,16 @@
             border: 1px solid #ccc;
             margin-right: 10px;
         }
+        main {
+            padding: 20px;
+        }
+        .container {
+            margin-bottom: 20px;
+
+        }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
         }
         table th, table td {
             border: 1px solid #ccc;
@@ -41,50 +47,84 @@
         table th {
             background-color: #f2f2f2;
         }
+        .tablaestilo {
+            overflow-x: auto;
+        }
+        .tablaestilo table {
+            width: auto;
+        }
+        .tablaestilo img {
+            max-width: 300px;
+            height: auto;
+
+        }
     </style>
 </head>
 <body>
 
-    <?php
-    include_once ("components/header.php");
-    ?>
+<?php
+include_once("components/header.php");
+?>
 
 <main>
-     <div class="container">
-            <h2>Buscar</h2>
-            <form action="/buscar" method="GET">
-                <input type="text" name="query" placeholder="Ingrese su búsqueda">
-                <br>
-                <input type="submit" value="Buscar">
-            </form>
-        </div>
+    <div class="container">
+        <h2>Buscar</h2>
+        <form action="busqueda.php" method="GET">
+            <label for="busqueda">Buscar:</label>
+            <input type="text" id="busqueda" name="busqueda">
+            <button type="submit">Buscar</button>
+        </form>
 
+    </div>
+
+
+
+    <div class="tablaestilo">
         <table>
             <thead>
             <tr>
                 <th>Imagen</th>
-                <th>Tipo</th>
                 <th>Nombre</th>
+                <th>Tipo</th>
                 <th>Número</th>
             </tr>
             </thead>
-///
             <tbody>
-            <tr>
-                <td><img src="imagen1.jpg" alt="Imagen 1"></td>
-                <td>Tipo 1</td>
-                <td>Nombre 1</td>
-                <td>123456789</td>
-            </tr>
-            <tr>
-                <td><img src="imagen2.jpg" alt="Imagen 2"></td>
-                <td>Tipo 2</td>
-                <td>Nombre 2</td>
-                <td>987654321</td>
-            </tr>
-            </tbody>
+            <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "Farma100.";
+            $database = "PokemonDB";
 
-        </table>
-</main>
-</body>
-</html>
+            // Crear conexión
+            $conn = new mysqli($servername, $username, $password, $database);
+
+            // Verificar conexión
+            if ($conn->connect_error) {
+                die("Conexión fallida: " . $conn->connect_error);
+            }
+
+            // Consulta SQL para obtener datos de la tabla
+            $sql = "SELECT imagen, nombre, tipo, numero_identificador FROM pokemon";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td><img src='img/" . $row["imagen"] . "' alt='" . $row["nombre"] . "'></td>";
+                    echo "<td>" . $row["nombre"] . "</td>";
+                    echo "<td>" . $row["tipo"] . "</td>";
+                    echo "<td>" . $row["numero_identificador"] . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='4'>0 resultados encontrados.</td></tr>";
+            }
+
+
+
+            $conn->close();
+?>
+
+
