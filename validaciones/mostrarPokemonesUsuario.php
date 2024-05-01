@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = " ";
+$password = "";
 $database = "PokemonDB";
 
 // Crear conexión
@@ -24,13 +24,25 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["nombre"] . "</td>";
         echo "<td>" . $row["tipo"] . "</td>";
         echo "<td>" . $row["numero_identificador"] . "</td>";
+        //boton modificar
+        echo "<td>";
+        echo "<form action='validaciones/modificarPokemon.php' method='post'>";
+        echo " <input type='hidden' name='id' value=' " . $row['numero_identificador'] . "'>";
+        echo "<input type='submit' value='Modificar'>";
+        echo "</form>";
+        echo "</td>";
+        //boton dar de baja
+        echo "<td>";
+        echo "<form action='validaciones/darDeBajaPokemon.php' method='post'>";
+        echo "<input type='hidden' name='id' value='" . $row["numero_identificador"] . "'>";
+        echo "<input type='submit' value='Dar de Baja'>";
+        echo "</form>";
+        echo "</td>";
         echo "</tr>";
     }
 } else {
     echo "<tr><td colspan='4'>0 resultados encontrados.</td></tr>";
 }
 
-
-
+// Cerrar conexión
 $conn->close();
-?>

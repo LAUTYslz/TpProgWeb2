@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
     // Crear conexión
     $servername = "localhost";
     $username = "root";
-    $password = "Farma100.";
+    $password = "";
     $database = "PokemonDB";
 
     $conn = new mysqli($servername, $username, $password, $database);
