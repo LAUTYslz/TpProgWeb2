@@ -53,11 +53,12 @@
     <main>
         <div class="container">
             <h2>Buscar</h2>
-            <form action="/buscar" method="GET">
-                <input type="text" name="query" placeholder="Ingrese su búsqueda">
-                <br>
-                <input type="submit" value="Buscar">
+            <form action="busqueda.php" method="GET">
+                <label for="busqueda">Buscar:</label>
+                <input type="text" id="busqueda" name="busqueda">
+                <button type="submit">Buscar</button>
             </form>
+
         </div>
 
         <div class="tablaestilo">
@@ -74,7 +75,7 @@
                 <?php
                 $servername = "localhost";
                 $username = "root";
-                $password = "Farma100.";
+                $password = "capoTATO12";
                 $database = "PokemonDB";
 
                 // Crear conexión

@@ -67,30 +67,14 @@ include_once("components/header.php");
 ?>
 
 <main>
-    <div class="container">
-        <h2>Buscar</h2>
-
-        <form action="busqueda.php" method="GET">
-            <label for="busqueda">Buscar:</label>
-            <input type="text" id="busqueda" name="busqueda">
-            <button type="submit">Buscar</button>
-        </form>
-
-    </div>
-
-
-    <div class="tablaestilo">
-        <table>
-            <thead>
-            <tr>
-                <th>Imagen</th>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Número</th>
-            </tr>
-            </thead>
-            <tbody>
             <?php
+            if (isset($_POST["numero_identificador"])) {
+                $id_solicitado = $_POST["numero_identificador"];
+            } else {
+                echo "El identificador no ha sido enviado correctamente.";
+                    var_dump($_POST);
+                exit;
+            }
             $servername = "localhost";
             $username = "root";
             $password = "capoTATO12";
@@ -105,26 +89,22 @@ include_once("components/header.php");
             }
 
             // Consulta SQL para obtener datos de la tabla
-            $sql = "SELECT imagen, nombre, tipo, numero_identificador FROM pokemon";
+            $sql = "SELECT * FROM pokemon where numero_identificador like $id_solicitado";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                // Output data of each row
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td><img src='img/" . $row["imagen"] . "' alt='" . $row["nombre"] . "'></td>";
-                    echo "<td>";
-                        echo "<form action='pokemon.php' method='post'>";
-                        echo "<td><input type='hidden' name='numero_identificador' value='" . htmlspecialchars($row['numero_identificador']) . "'>";
-                        echo "<input type='submit' value='" . htmlspecialchars($row['nombre']) . "'></td>";
-                        echo "</form>";
-                    echo "</td>";
-                    echo "<td>" . $row["tipo"] . "</td>";
-                    echo "<td>" . $row["numero_identificador"] . "</td>";
-                    echo "</tr>";
+
+                    echo "<h1>$row[nombre]</h1>";
+                    echo "<p>$row[descripcion]</p>";
+                    echo "<img src='img/" . $row['imagen'] . "'>";
                 }
             } else {
                 echo "<tr><td colspan='4'>0 resultados encontrados.</td></tr>";
             }
+
             $conn->close();
 ?>
+</main>
+</body>
+
