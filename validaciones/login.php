@@ -27,7 +27,7 @@ function validarUsuario($usuario, $pass)
 {
     $servername = "localhost";
     $username = "root";
-    $password = "capoTATO12";
+    $password = "";
 
     $database = "login";
 
