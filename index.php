@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,30 +34,38 @@
         }
         .container {
             margin-bottom: 20px;
-
         }
-        table {
+        .tablaestilo table {
             width: 100%;
             border-collapse: collapse;
         }
-        table th, table td {
+        .tablaestilo th,
+        .tablaestilo td {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
+            font-size: 14px; /* Tamaño de fuente */
         }
-        table th {
+        .tablaestilo th {
             background-color: #f2f2f2;
-        }
-        .tablaestilo {
-            overflow-x: auto;
-        }
-        .tablaestilo table {
-            width: auto;
+            font-weight: bold; /* Negrita para encabezados */
         }
         .tablaestilo img {
-            max-width: 300px;
+            max-width: 100px;
             height: auto;
+            transition: transform 0.3s ease; /* Añade una transición para el efecto de movimiento */
+        }
+        .tablaestilo img:hover {
+            transform: translateY(-5px); /* Mueve la imagen hacia arriba al pasar el mouse sobre ella */
+        }
 
+        /* Estilos responsivos */
+        @media screen and (max-width: 768px) {
+            /* Ajusta el tamaño de la fuente para pantallas más pequeñas */
+            .tablaestilo th,
+            .tablaestilo td {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -72,7 +81,7 @@ include_once("components/header.php");
 
         <form action="busqueda.php" method="GET">
             <label for="busqueda">Buscar:</label>
-            <input type="text" id="busqueda" name="busqueda">
+            <input type="text" id="busqueda" name="busqueda" >
             <button type="submit">Buscar</button>
         </form>
 
@@ -90,6 +99,7 @@ include_once("components/header.php");
             </tr>
             </thead>
             <tbody>
+
             <?php include_once ("validaciones/mostrarPokemones.php");
             ?>
             </tbody>

@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "Farma100.";
 $database = "PokemonDB";
 
 // Crear conexión

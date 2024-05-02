@@ -3,15 +3,15 @@
 include_once("components/header.php");
 
 
-// Verificar si se ha enviado una consulta desde el formulario
+
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
-    // Limpiar y validar la entrada del usuario
-    $busqueda = htmlspecialchars($_GET['busqueda']); // Evita inyecciones de código HTML/JavaScript
+
+    $busqueda = htmlspecialchars($_GET['busqueda']); //
 
     // Crear conexión
     $servername = "localhost";
     $username = "root";
-    $password = "capoTATO12";
+    $password = "Farma100.";
     $database = "PokemonDB";
 
     $conn = new mysqli($servername, $username, $password, $database);
@@ -42,12 +42,19 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
                 echo "<td>" . $row["nombre"] . "</td>";
                 echo "<td>" . $row["tipo"] . "</td>";
                 echo "<td>" . $row["numero_identificador"] . "</td>";
+                echo "<td>" . $row["descripcion"] . "</td>";
                 echo "</tr>";
             }
             echo "</table>";
         } else {
             echo "No se encontró ningún Pokémon con el nombre '$nombre_pokemon'.";
+
+
+
+
+
         }
+
 
         // Liberar el conjunto de resultados
         $result->free();

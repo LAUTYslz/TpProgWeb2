@@ -41,6 +41,8 @@
         table th {
             background-color: #f2f2f2;
         }
+
+
     </style>
 </head>
 <body>
@@ -55,7 +57,7 @@ include_once ("../components/hearder-admin.php");
 
         $servername = "localhost";
         $username = "root";
-        $password = "";
+        $password = "Farma100.";
         $database = "PokemonDB";
 
         // Crear conexión
@@ -74,19 +76,23 @@ include_once ("../components/hearder-admin.php");
             $row = $result->fetch_assoc();
         ?>
         <h2>Modificar Pokémon</h2>
-        <form action="actualizarPokemon.php" method="post">
+        <form class="actualizar" action="actualizarPokemon.php" method="post" enctype="multipart/form-data">
             <!--mostrar id-->
-            <input type="hidden" name="id" value="<?php echo $row['numero_identificador']; ?>">
+            <label for="nombre">Numero de Identificador:</label><br>
+            <input type="text" name="id" value="<?php echo $row['numero_identificador']; ?>"><br>
             <!--mostrar nombre-->
-            <label for="nombre">Nombre:</label>
+            <label for="nombre">Nombre:</label><br>
             <input type="text" name="nombre" value="<?php echo $row['nombre']; ?>"><br>
             <!--mostrar tipo-->
-            <label for="tipo">Tipo:</label>
+            <label for="tipo">Tipo:</label><br>
             <input type="text" name="tipo" value="<?php echo $row['tipo']; ?>"><br>
             <!--mostrar imagen-->
-            <label for="imagen">Imagen:</label>
-            <img src="<?php echo $row['imagen']; ?>">
-            <input type="text" name="imagen" value="<?php echo $row['imagen']; ?>"><br>
+            <label for="imagen">Imagen:</label><br>
+            <img class="imagen" src="<?php echo $row['imagen']; ?>">
+            <input type="text" name="imagen_actual" value="<?php echo $row['imagen']; ?>"><br>
+            <!--subir nueva  imagen-->
+            <p>Subir Nueva Imagen</p><br>
+            <input type="file" id="nueva_imagen" name="nueva_imagen" accept="image/*" <?php echo $row['imagen']; ?><br>
 
             <input type="submit" value="Guardar Cambios">
         </form>
@@ -99,3 +105,4 @@ include_once ("../components/hearder-admin.php");
 </main>
 </body>
 </html>
+
