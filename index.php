@@ -35,6 +35,13 @@
         .container {
             margin-bottom: 20px;
         }
+        .tablaestilo div{
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
+            justify-content: space-between; /* Distribuye el espacio entre los elementos en cada fila */
+
+        }
+
         .tablaestilo table {
             width: 100%;
             border-collapse: collapse;
@@ -102,6 +109,7 @@ include_once("components/header.php");
 
             <?php include_once ("validaciones/mostrarPokemones.php");
             ?>
+
             </tbody>
         </table>
     </div>

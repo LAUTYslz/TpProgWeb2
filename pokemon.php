@@ -68,16 +68,17 @@ include_once("components/header.php");
 
 <main>
             <?php
-            if (isset($_POST["numero_identificador"])) {
-                $id_solicitado = $_POST["numero_identificador"];
+            if (isset($_GET["id"])) {
+                $id_solicitado = $_GET["id"];
+
             } else {
                 echo "El identificador no ha sido enviado correctamente.";
-                    var_dump($_POST);
-                exit;
+                    var_dump($_GET);
+                exit();
             }
             $servername = "localhost";
             $username = "root";
-            $password = "capoTATO12";
+            $password = "Farma100.";
             $database = "PokemonDB";
 
             // Crear conexión
@@ -95,8 +96,9 @@ include_once("components/header.php");
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
 
-                    echo "<h1>$row[nombre]</h1>";
-                    echo "<p>$row[descripcion]</p>";
+                    echo "Nombre". "<h1>$row[nombre]</h1>";
+                    echo "Descripcion"."<p>$row[descripcion]</p>";
+                    echo "Tipo" ."<p>$row[tipo]</p>";
                     echo "<img src='img/" . $row['imagen'] . "'>";
                 }
             } else {

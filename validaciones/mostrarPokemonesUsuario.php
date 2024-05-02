@@ -1,3 +1,10 @@
+<style>
+    pokemon item{
+        width: calc(33.33% - 10px); /* Calcula el ancho de cada elemento para que haya 3 elementos por fila */
+        margin-bottom: 20px; /* Espacio entre filas */
+        /* Otros estilos de los elementos, como padding, border, etc. */
+    }
+</style>
 <?php
 $servername = "localhost";
 $username = "root";
@@ -21,9 +28,11 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td><img src='img/" . $row["imagen"] . "' alt='" . $row["nombre"] . "'></td>";
-        echo "<td>" . $row["nombre"] . "</td>";
+        echo " <input type='hidden' name='id' value=' " . $row['numero_identificador'] . "'>";
+        echo "<td><a href='pokemon.php?id=" . $row["numero_identificador"] . "'>" . $row["nombre"] . "</a></td>";
         echo "<td>" . $row["tipo"] . "</td>";
         echo "<td>" . $row["numero_identificador"] . "</td>";
+        echo "</tr>";
         //boton modificar
         echo "<td>";
         echo "<form action='validaciones/modificarPokemon.php' method='post'>";

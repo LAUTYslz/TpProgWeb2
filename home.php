@@ -41,6 +41,20 @@
         table th {
             background-color: #f2f2f2;
         }
+        .alta{
+            position: fixed;
+                top: 50px; /* Ajusta la distancia desde arriba según tu preferencia */
+            margin-top: 100px;
+                right: 100px; /* Ajusta la distancia desde la derecha según tu preferencia */
+                z-index: 1000; /* Ajusta el índice z según sea necesario para asegurarte de que esté por encima de otros elementos */
+                padding: 10px 20px;
+                background-color: #007bff; /* Color de fondo del botón */
+                color: #fff; /* Color del texto del botón */
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+
+        }
     </style>
 </head>
 <body>
@@ -76,6 +90,9 @@
                 </tbody>
             </table>
         </div>
+        <form action='validaciones/darDeAltaPokemon.php' method='post'>";
+            <button class="alta" type="submit">Dar de ALta un Nuevo Pokemon </button>
+
     </main>
 </body>
 </html>
