@@ -1,12 +1,3 @@
-<style>
-    .pokemon{
-        width: calc(33.33% - 10px); /* Calcula el ancho de cada elemento para que haya 3 elementos por fila */
-        margin-bottom: 20px; /* Espacio entre filas */
-        /* Otros estilos de los elementos, como padding, border, etc. */
-    }
-</style>
-
-
 <?php
 $servername = "localhost";
 $username = "root";
@@ -37,6 +28,8 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["numero_identificador"] . "</td>";
         echo "</tr>";
         echo "</div>";
+        echo "</div>";
+
     }
 } else {
     echo "<tr><td colspan='4'>0 resultados encontrados.</td></tr>";

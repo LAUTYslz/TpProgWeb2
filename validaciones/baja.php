@@ -15,17 +15,18 @@ if ($conn->connect_error) {
 }
 
 // Obtener los valores del formulario
-$numero_identificador = $_POST['numero_identificador'];
-$nombre = $_POST['nombre'];
-$tipo = $_POST['tipo'];
-$imagen = $_POST['imagen'];
-$descripcion = $_POST['descripcion'];
+$id = $_POST['id'];
 
-// Consulta SQL para INSERTAR datos en la tabla
-$sql = "INSERT INTO pokemon (numero_identificador,imagen,nombre,tipo, descripcion) VALUES ('$numero_identificador', '$imagen', '$nombre', '$tipo', '$descripcion')";
+
+
+
+
+
+
+$sql = "DELETE FROM pokemon WHERE id = $id";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Nuevo registro creado exitosamente";
+    echo "Eliminado exitosamente";
 
     header("location:../home.php");
 

@@ -28,6 +28,7 @@
             border-radius: 5px;
             border: 1px solid #ccc;
             margin-right: 10px;
+
         }
         main {
             padding: 20px;
@@ -35,17 +36,20 @@
         .container {
             margin-bottom: 20px;
         }
-        .tablaestilo div{
+        .tablaestilo{
             display: flex;
             flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
-            justify-content: space-between; /* Distribuye el espacio entre los elementos en cada fila */
 
+            width: 600px;
+        }
+        .tablaestilo div{
+            width: calc(13.33% - 20px); /* Calcula el ancho de cada elemento para que haya 3 elementos por fila */
+            margin-bottom: 20px;
         }
 
-        .tablaestilo table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+
+
+
         .tablaestilo th,
         .tablaestilo td {
             border: 1px solid #ccc;
@@ -56,6 +60,7 @@
         .tablaestilo th {
             background-color: #f2f2f2;
             font-weight: bold; /* Negrita para encabezados */
+            width: 33%;
         }
         .tablaestilo img {
             max-width: 100px;

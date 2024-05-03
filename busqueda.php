@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
         } else {
             echo "No se encontró ningún Pokémon con el nombre '$nombre_pokemon'.";
 
-
+            header("location:../index.php");
 
 
 
