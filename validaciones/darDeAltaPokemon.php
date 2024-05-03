@@ -5,71 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dar de alta un Pokémon</title>
     <link rel="stylesheet" href="styles.css">
+    <?php
+    session_start();
+    include_once ("../components/hearder-admin.php");
+    ?>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
+            background-color: #f3f3f3;
         }
-
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: #fff;
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            height: 50px;
+        }
+        header input[type="text"],
+        header input[type="password"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+        main {
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
         h2 {
-            margin-top: 30px;
+            margin-top: 20px;
             color: #333;
             text-align: center;
         }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        input[type="text"],
-        textarea,
-        button {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
+        form {
+            background-color: #fff;
+            padding: 20px;
             border-radius: 5px;
-            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
         }
-
-        input[type="file"] {
-            width: calc(100% - 20px);
-            margin-top: 5px;
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
         }
-
-        textarea {
-            resize: vertical;
+        img.imagen {
+            max-width: 100%;
+            margin-top: 10px;
         }
-
-        button {
-            background-color: #007bff;
+        input[type="submit"] {
+            background-color: #333;
             color: #fff;
             border: none;
+            padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            margin-top: 10px;
         }
-
-        button:hover {
-            background-color: #0056b3;
+        input[type="submit"]:hover {
+            background-color: #555;
         }
     </style>
+
 </head>
 <body>
 <h2>NUEVO POKEMON</h2>

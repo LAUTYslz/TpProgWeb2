@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <?php
+    session_start();
+    include_once ("../components/hearder-admin.php");
+    ?>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f3f3f3;
         }
         header {
             background-color: #333;
@@ -29,29 +34,48 @@
             border: 1px solid #ccc;
             margin-right: 10px;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+        main {
+            padding: 20px;
         }
-        table th, table td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
+        h2 {
+            margin-top: 0;
+            color: #333;
         }
-        table th {
-            background-color: #f2f2f2;
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
         }
-
-
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        img.imagen {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
     </style>
+
+
 </head>
 <body>
-<?php
 
-session_start();
-include_once ("../components/hearder-admin.php");
-?>
 <main>
     <?php
         $id_obtenido = $_POST["id"];
@@ -100,7 +124,7 @@ include_once ("../components/hearder-admin.php");
         <?php
             } else {
                 echo "No se encontró ningún Pokémon con el ID proporcionado.";
-                heade;
+
             }
             $conn->close();
         ?>

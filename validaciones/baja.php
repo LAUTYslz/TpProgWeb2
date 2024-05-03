@@ -32,7 +32,7 @@ if ($conn->query($sql) === TRUE) {
 
 
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "No pudimos eliminar tu pokemon, intentalo nuevamente";
 }
 
 $conn->close();
