@@ -1,3 +1,10 @@
+<style>
+    .tipo-imagen {
+        width: 64px;  /* para que se quede como icono*/
+        height: 64px;
+
+    }
+</style>
 <?php
 $servername = "localhost";
 $username = "root";
@@ -11,7 +18,8 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
+// incluir funcion
+include_once("funcionTipo.php");
 // Consulta SQL para obtener datos de la tabla
 $sql = "SELECT imagen, nombre, tipo, numero_identificador FROM pokemon";
 $result = $conn->query($sql);
@@ -24,7 +32,11 @@ if ($result->num_rows > 0) {
         echo "<td><img src='img/" . $row["imagen"] . "' alt='" . $row["nombre"] . "'></td>";
         echo " <input type='hidden' name='id' value=' " . $row['numero_identificador'] . "'>";
         echo "<td><a href='pokemon.php?id=" . $row["numero_identificador"] . "'>" . $row["nombre"] . "</a></td>";
-        echo "<td>" . $row["tipo"] . "</td>";
+        /* echo "<td>" . $row["tipo"] . "</td>";*/
+        $tipo = $row["tipo"];
+        $tipoImagen = obtenerImagenTipo($tipo);
+
+        echo "<td><img src='./img/tipo/" . $tipoImagen . ".png' alt='" . $tipo . "' class='tipo-imagen'></td>";
         echo "<td>" . $row["numero_identificador"] . "</td>";
         echo "</tr>";
         echo "</div>";
