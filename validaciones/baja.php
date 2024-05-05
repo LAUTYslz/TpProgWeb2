@@ -17,18 +17,11 @@ if ($conn->connect_error) {
 // Obtener los valores del formulario
 $id = $_POST['id'];
 
-
-
-
-
-
-
 $sql = "DELETE FROM pokemon WHERE id = $id";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Eliminado exitosamente";
-
-    header("location:../home.php");
+    $mensaje=urldecode("Baja exitosa");
+    header("location:../home.php?mensaje=$mensaje");
 
 
 } else {

@@ -21,6 +21,17 @@ $tipo = $_POST['tipo'];
 $imagen = $_POST['imagen']["name"];
 $descripcion = $_POST['descripcion'];
 
+
+// Verificar si el número de identificador ya existe
+$sql_check = "SELECT * FROM pokemon WHERE numero_identificador = $numero_identificador";
+$result_check = $conn->query($sql_check);
+
+if ($result_check->num_rows > 0) {
+    $mensaje = urldecode("El numero de identificador ya esta en uso.'$numero_identificador', intente con otro numero");
+    header("Location: ../home.php?mensaje=$mensaje"); // Redirigir a alguna página
+
+}
+
 // Verificar si se ha subido una nueva imagen
 if ($_FILES["imagen"]["name"]) {
     $nombre_archivo = $_FILES["imagen"]["name"];
@@ -34,9 +45,9 @@ if ($_FILES["imagen"]["name"]) {
 $sql = "INSERT INTO pokemon (numero_identificador,imagen,nombre,tipo, descripcion) VALUES ('$numero_identificador', '$ruta_destino', '$nombre', '$tipo', '$descripcion')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Nuevo registro creado exitosamente";
+    $mensaje=urldecode("Nuevo POKEMON ha sido creado exitosamente") ;
 
-    header("location:../home.php");
+    header("location:../home.php?mensaje=$mensaje");
 
 
 } else {

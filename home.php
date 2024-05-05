@@ -73,6 +73,7 @@
 // Muestra el mensaje
         echo "<p>$mensaje</p>";
     }
+
     ?>
 
     <main>
