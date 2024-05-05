@@ -5,17 +5,18 @@ if(isset($_POST["usuario"]) && $_POST["pass"]){
     $usuario = trim($_POST["usuario"]);
     $pass = trim($_POST["pass"]);
 
-    $mensajeError = "EL Usuario o contraseña es incorrecto";
+
 
     $esValido = validarUsuario($usuario,$pass);
 
     if ($esValido){
         $_SESSION["usuario"] = $usuario;
-
-        header("location:../home.php");
+        $mensaje = urlencode("Usted ha ingresado en modo-Admin.");
+        header("location:../home.php?mensaje=$mensaje");
         exit();
     }else{
-        header("location:../index.php");
+        $mensajeError = urlencode("Usuario o Contraseña incorrecta.");
+        header("location:../index.php?mensajeError=$mensajeError");
         exit();
     }
 }else{

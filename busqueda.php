@@ -47,12 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
             }
             echo "</table>";
         } else {
-            echo "No se encontró ningún Pokémon con el nombre '$nombre_pokemon'.";
-
-            header("location:../index.php");
-
-
-
+            $mensaje = urlencode("No se encontró ningún Pokémon con el nombre '$nombre_pokemon'.");
+            header("Location: ../index.php?mensaje=$mensaje"); // agragmos el mensaje para que aparezca en el index
+            exit;
         }
 
 

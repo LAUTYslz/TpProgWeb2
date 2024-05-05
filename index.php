@@ -11,6 +11,10 @@
             margin: 0;
             padding: 0;
         }
+        p{
+            text-align: center;
+            color: red;
+        }
         header {
             background-color: #333;
             color: #fff;
@@ -85,6 +89,19 @@
 
 <?php
 include_once("components/header.php");
+// Verificar si se ha pasado un mensaje en la URL
+if (isset($_GET['mensaje'])) {
+// Recupera el mensaje y decodifica la URL
+    $mensaje = urldecode($_GET['mensaje']);
+// Muestra el mensaje
+    echo "<p>$mensaje</p>";
+}
+if (isset($_GET['mensajeError'])) {
+// Recupera el mensaje y decodifica la URL
+    $mensaje = urldecode($_GET['mensajeError']);
+// Muestra el mensaje
+    echo "<p>$mensaje</p>";
+}
 ?>
 
 <main>
@@ -118,6 +135,7 @@ include_once("components/header.php");
             </tbody>
         </table>
     </div>
+
 </main>
 </body>
 </html>

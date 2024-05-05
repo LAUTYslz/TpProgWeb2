@@ -88,7 +88,11 @@
     </div>
     <div class="form-group">
         <label for="tipo">Tipo:</label>
-        <input type="text" id="tipo" name="tipo" required>
+        <select id="tipo" name="tipo" required>
+            <option value="Hierba" name="tipo">Hierba</option>
+            <option value="Fuego" name="tipo">Fuego</option>
+            <option value="Planta" name="tipo">Planta</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="imagen">Imagen:</label>

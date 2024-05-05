@@ -97,7 +97,7 @@
         $sql = "SELECT * FROM pokemon WHERE numero_identificador = $id_obtenido";
         $result = $conn->query($sql);
 
-        if($result->num_rows>0){
+    if($result->num_rows>0){
             $row = $result->fetch_assoc();
         ?>
         <h2>BAJA Pokémon</h2>
@@ -122,7 +122,9 @@
             <input type="submit" value="BAJA">
         </form>
         <?php
-            } else {
+
+
+    } else {
                 echo "No se encontró ningún Pokémon con el ID proporcionado.";
 
             }

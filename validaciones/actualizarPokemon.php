@@ -15,7 +15,8 @@ if ($conn->connect_error) {
 }
 
 // Obtener datos del formulario
-$id = $_POST["id"];
+$id= $_POST["id"];
+$numero_identificador = $_POST["numero_identificador"];
 $nombre = $_POST["nombre"];
 $tipo = $_POST["tipo"];
 $imagen_actual = $_POST["imagen_actual"];
@@ -29,14 +30,13 @@ if ($_FILES["nueva_imagen"]["name"]) {
     // Mover la nueva imagen al directorio de destino
     move_uploaded_file($ruta_temporal, $ruta_destino);
 
-// tenemos que hacer la logica para que el admi puede modificar el id pero no permietiendo qye haya otro igual.
 
     // Actualizar la ruta de la imagen en la base de datos
 
-    $sql = "UPDATE pokemon SET nombre = '$nombre', tipo = '$tipo', imagen = '$ruta_destino' WHERE numero_identificador = $id";
+    $sql = "UPDATE pokemon SET nombre = '$nombre', tipo = '$tipo', imagen = '$ruta_destino', numero_identificador='$numero_identificador' WHERE id = $id";
 } else {
     // No se ha subido una nueva imagen, actualizar solo nombre y tipo
-    $sql = "UPDATE pokemon SET nombre = '$nombre', tipo = '$tipo' WHERE numero_identificador = $id";
+    $sql = "UPDATE pokemon SET nombre = '$nombre', tipo = '$tipo', numero_identificador='$numero_identificador'WHERE id = $id";
 }
 
 if ($conn->query($sql) === TRUE) {

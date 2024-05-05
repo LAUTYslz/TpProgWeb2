@@ -18,11 +18,20 @@ if ($conn->connect_error) {
 $numero_identificador = $_POST['numero_identificador'];
 $nombre = $_POST['nombre'];
 $tipo = $_POST['tipo'];
-$imagen = $_POST['imagen'];
+$imagen = $_POST['imagen']["name"];
 $descripcion = $_POST['descripcion'];
 
+// Verificar si se ha subido una nueva imagen
+if ($_FILES["imagen"]["name"]) {
+    $nombre_archivo = $_FILES["imagen"]["name"];
+    $ruta_temporal = $_FILES["imagen"]["tmp_name"];
+    $ruta_destino = "../img/" . $nombre_archivo;
+
+    // Mover la nueva imagen al directorio de destino
+    move_uploaded_file($ruta_temporal, $ruta_destino);
+}
 // Consulta SQL para INSERTAR datos en la tabla
-$sql = "INSERT INTO pokemon (numero_identificador,imagen,nombre,tipo, descripcion) VALUES ('$numero_identificador', '$imagen', '$nombre', '$tipo', '$descripcion')";
+$sql = "INSERT INTO pokemon (numero_identificador,imagen,nombre,tipo, descripcion) VALUES ('$numero_identificador', '$ruta_destino', '$nombre', '$tipo', '$descripcion')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Nuevo registro creado exitosamente";

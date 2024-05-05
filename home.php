@@ -10,6 +10,11 @@
             margin: 0;
             padding: 0;
         }
+        p{
+            text-align: center;
+            color: #333333;
+            font-family: "Arial Black";
+        }
         header {
             background-color: #333;
             color: #fff;
@@ -62,6 +67,12 @@
     <?php
     session_start();
     include_once ("./components/hearder-admin.php");
+    if (isset($_GET['mensaje'])) {
+// Recupera el mensaje y decodifica la URL
+        $mensaje = urldecode($_GET['mensaje']);
+// Muestra el mensaje
+        echo "<p>$mensaje</p>";
+    }
     ?>
 
     <main>

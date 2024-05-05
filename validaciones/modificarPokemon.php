@@ -101,14 +101,21 @@
         <h2>Modificar Pokémon</h2>
         <form class="actualizar" action="actualizarPokemon.php" method="post" enctype="multipart/form-data">
             <!--mostrar id-->
-            <label for="nombre">Numero de Identificador:</label><br>
-            <input type="text" name="id" value="<?php echo $row['numero_identificador']; ?>"><br>
+
+            <input type="hidden" name="id" value="<?php echo $row['id']; ?>"><br>
+            <label for="nombre">Numero de Identificador:</label>
+            <input type="text" name="numero_identificador" value="<?php echo $row['numero_identificador']; ?>"><br>
             <!--mostrar nombre-->
-            <label for="nombre">Nombre:</label><br>
+
+            <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" value="<?php echo $row['nombre']; ?>"><br>
             <!--mostrar tipo-->
-            <label for="tipo">Tipo:</label><br>
-            <input type="text" name="tipo" value="<?php echo $row['tipo']; ?>"><br>
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo" required>
+                <option value="Hierba" name="tipo">Hierba</option>
+                <option value="Fuego" name="tipo">Fuego</option>
+                <option value="Planta" name="tipo">Planta</option>
+            </select>
             <!--mostrar imagen-->
             <label for="imagen">Imagen:</label><br>
             <img class="imagen" src="<?php echo $row['imagen']; ?>">
