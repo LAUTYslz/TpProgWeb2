@@ -58,6 +58,12 @@
             height: auto;
 
         }
+          .tipo-imagen {
+              width: 64px;  /* para que se quede como icono*/
+              height: 64px;
+
+          }
+
     </style>
 </head>
 <body>
@@ -92,13 +98,18 @@ include_once("components/header.php");
             // Consulta SQL para obtener datos de la tabla
             $sql = "SELECT * FROM pokemon where numero_identificador like $id_solicitado";
             $result = $conn->query($sql);
-
+            // incluir funcion
+            include_once("validaciones/funcionTipo.php");
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
 
                     echo "Nombre". "<h1>$row[nombre]</h1>";
                     echo "Descripcion"."<p>$row[descripcion]</p>";
-                    echo "Tipo" ."<p>$row[tipo]</p>";
+                    /* echo "<td>" . $row["tipo"] . "</td>";*/
+                    $tipo = $row["tipo"];
+                    $tipoImagen = obtenerImagenTipo($tipo);
+
+                    echo "<td><img src='./img/tipo/" . $tipoImagen . ".png' alt='" . $tipo . "' class='tipo-imagen'></td>";
                     echo "<img src='img/" . $row['imagen'] . "'>";
                 }
             } else {

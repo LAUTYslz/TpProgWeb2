@@ -1,3 +1,10 @@
+<style>
+    .tipo-imagen {
+        width: 64px;  /* para que se quede como icono*/
+        height: 64px;
+
+    }
+</style>
 <?php
 
 include_once("components/header.php");
@@ -30,7 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
         // Consulta SQL para filtrar el Pokémon por nombre
         $sql = "SELECT * FROM pokemon WHERE nombre = '$nombre_pokemon'";
         $result = $conn->query($sql);
-
+// incluir funcion
+        include_once("validaciones/funcionTipo.php");
         // Verificar si se encontró el Pokémon
         if ($result->num_rows > 0) {
             // Mostrar la tabla solo con el Pokémon filtrado
@@ -40,7 +48,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
                 echo "<tr>";
                 echo "<td><img src='img/" . $row["imagen"] . "' alt='" . $row["nombre"] . "'></td>";
                 echo "<td>" . $row["nombre"] . "</td>";
-                echo "<td>" . $row["tipo"] . "</td>";
+                /* echo "<td>" . $row["tipo"] . "</td>";*/
+                $tipo = $row["tipo"];
+                $tipoImagen = obtenerImagenTipo($tipo);
+
+                echo "<td><img src='./img/tipo/" . $tipoImagen . ".png' alt='" . $tipo . "' class='tipo-imagen'></td>";
                 echo "<td>" . $row["numero_identificador"] . "</td>";
                 echo "<td>" . $row["descripcion"] . "</td>";
                 echo "</tr>";
