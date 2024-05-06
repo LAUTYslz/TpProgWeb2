@@ -5,11 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/dar-de-baja.css">
+
     <?php
     session_start();
-    include_once ("../components/hearder-admin.php");
+    include_once ("../components/header-admin-validaciones.php");
     ?>
     <style>
+        /*
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -70,6 +74,8 @@
         input[type="submit"]:hover {
             background-color: #555;
         }
+        */
+
     </style>
 
 
@@ -80,9 +86,17 @@
     <?php
         $id_obtenido = $_POST["id"];
 
+        /*
+        $config = parse_ini_file('../config.ini');
+        $servername = $config['pokemon']['servername'];
+        $username = $config['pokemon']['username'];
+        $password = $config['pokemon']['password'];
+        $database = $config['pokemon']['database'];
+        */
+
         $servername = "localhost";
         $username = "root";
-        $password = "Farma100.";
+        $password = "";
         $database = "PokemonDB";
 
         // Crear conexión
@@ -100,7 +114,7 @@
     if($result->num_rows>0){
             $row = $result->fetch_assoc();
         ?>
-        <h2>BAJA Pokémon</h2>
+        <h2 class="titulo-baja">BAJA Pokémon</h2>
         <form class="baja" action="baja.php" method="post" enctype="multipart/form-data">
             <!--mostrar id-->
             <label for="nombre">ID :</label><br>
@@ -115,11 +129,11 @@
             <input type="text" name="tipo" value="<?php echo $row['tipo']; ?>"><br>
             <!--mostrar imagen-->
             <label for="imagen">Imagen:</label><br>
-            <img class="imagen" src="<?php echo $row['imagen']; ?>">
+            <img class="imagen" src="../img/<?php echo $row['imagen']; ?>">
 
 
 
-            <input type="submit" value="BAJA">
+            <input class="boton-baja" type="submit" value="BAJA">
         </form>
         <?php
 

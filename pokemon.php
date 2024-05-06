@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/pokemon.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
+        /*
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -59,11 +63,11 @@
 
         }
           .tipo-imagen {
-              width: 64px;  /* para que se quede como icono*/
+              width: 64px;  /* para que se quede como icono
               height: 64px;
 
           }
-
+    */
     </style>
 </head>
 <body>
@@ -82,10 +86,18 @@ include_once("components/header.php");
                     var_dump($_GET);
                 exit();
             }
-            $servername = "localhost";
-            $username = "root";
-            $password = "Farma100.";
-            $database = "PokemonDB";
+            /*
+            $config = parse_ini_file('config.ini');
+            $servername = $config['pokemon']['servername'];
+            $username = $config['pokemon']['username'];
+            $password = $config['pokemon']['password'];
+            $database = $config['pokemon']['database'];
+            */
+
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $database = "PokemonDB";
 
             // Crear conexión
             $conn = new mysqli($servername, $username, $password, $database);
@@ -103,14 +115,14 @@ include_once("components/header.php");
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
 
-                    echo "Nombre". "<h1>$row[nombre]</h1>";
-                    echo "Descripcion"."<p>$row[descripcion]</p>";
+                    echo "<div class='pokemon-info'><h1>Pokemon: ". "$row[nombre]</h1>";
+                    echo "<h2>Descripcion</h2>"." <p>$row[descripcion]</p>";
                     /* echo "<td>" . $row["tipo"] . "</td>";*/
                     $tipo = $row["tipo"];
                     $tipoImagen = obtenerImagenTipo($tipo);
 
-                    echo "<td><img src='./img/tipo/" . $tipoImagen . ".png' alt='" . $tipo . "' class='tipo-imagen'></td>";
-                    echo "<img src='img/" . $row['imagen'] . "'>";
+                    echo "<h2>Tipo</h2><img src='./img/tipo/" . $tipoImagen . ".png' alt='" . $tipo . "' class='tipo-imagen'> </div><br>";
+                    echo "<div class='pokemon-foto'><img src='img/" . $row['imagen'] . "'></div>";
                 }
             } else {
                 echo "<tr><td colspan='4'>0 resultados encontrados.</td></tr>";

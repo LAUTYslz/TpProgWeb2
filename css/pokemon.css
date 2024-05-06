@@ -1,0 +1,92 @@
+
+main{
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: #e3e321;
+    border: 3px solid #2020e5;
+    justify-content: space-evenly;
+    border-radius: 20px;
+}
+.pokemon-info p{
+    background: none;
+    text-align: start;
+    margin-bottom: 4vh;
+    text-align: justify;
+}
+.pokemon-foto img{
+    max-width: 400px;
+}
+.pokemon-info h1{
+    text-align: center;
+    margin-bottom: 5vh;
+}
+.pokemon-info *{
+    margin: 0;
+}
+.pokemon-info{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+}
+.pokemon-info h2{
+    margin-bottom: 2vh;
+}
+.tipo-imagen{
+    width: 50px;
+    height: 50px;
+    margin:  2vh auto;
+}
+
+/*---------------------------------------------------------------------------RESPONSIVE CELULAR-----------*/
+@media screen and (max-width: 768px) {
+    main{
+        flex-direction: column;
+        padding: 2vh 0;
+    }
+    .pokemon-foto{
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    .pokemon-foto img{
+        max-width: 200px;
+    }
+    .pokemon-info{
+        width: 90%;
+        margin: auto;
+    }
+    .pokemon-info h1{
+        text-align: center;
+        margin: 3vh auto 5vh;
+        font-size: 4vh;
+    }
+}
+
+/* !--------------RESPONSIVE TABLET -----------*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    main{
+        width: 80%;
+        flex-direction: column;
+        padding: 2vh 0;
+    }
+    .pokemon-foto{
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    .pokemon-foto img{
+        max-width: 200px;
+    }
+    .pokemon-info{
+        width: 90%;
+        margin: auto;
+    }
+    .pokemon-info h1{
+        text-align: center;
+        margin: 3vh auto 5vh;
+        font-size: 4vh;
+    }
+}

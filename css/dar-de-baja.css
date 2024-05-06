@@ -1,0 +1,55 @@
+.titulo-baja{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.73);
+    width: 40%;
+    font-size: 5vh;
+    border-radius: 20px;
+    margin: 3vh auto;
+}
+.baja{
+    box-sizing: border-box;
+    background-color: #e3e321;
+    border: 3px solid #2020e5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    padding: 3vh;
+}
+.baja input{
+    box-sizing: border-box;
+    width: 70%;
+    border-radius: 10px;
+    height: 5vh;
+    padding-left: 1vh;
+}
+.baja .imagen{
+    max-width: 150px;
+    margin: auto auto 2vh;
+}
+.boton-baja{
+    margin: auto;
+}
+
+/* !--------------RESPONSIVE TABLET -----------*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .baja{
+        width: 50%;
+    }
+    .titulo-baja{
+        width: 60%;
+        font-size: 4vh;
+    }
+}
+
+/*---------------------------------------------------------------------------RESPONSIVE CELULAR-----------*/
+@media screen and (max-width: 768px) {
+    .baja{
+        width: 80%;
+    }
+    .titulo-baja{
+        width: 80%;
+        font-size: 4vh;
+    }
+}

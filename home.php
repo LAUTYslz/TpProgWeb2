@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/general.css">
+
     <title>Pokedex</title>
     <style>
+        /*
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -46,6 +49,7 @@
         table th {
             background-color: #f2f2f2;
         }
+        */
         .alta{
             position: fixed;
                 top: 50px; /* Ajusta la distancia desde arriba según tu preferencia */
@@ -77,7 +81,7 @@
     ?>
 
     <main>
-        <div class="container">
+        <div class="container contenedor-busqueda">
             <h2>Buscar</h2>
             <form action="busqueda.php" method="GET">
                 <label for="busqueda">Buscar:</label>
@@ -87,7 +91,7 @@
 
         </div>
 
-        <div class="tablaestilo">
+        <div class="tablaestilo contenedor-tabla">
             <table>
                 <thead>
                 <tr>
@@ -103,8 +107,8 @@
             </table>
         </div>
         <form action='validaciones/darDeAltaPokemon.php' method='post'>";
-            <button class="alta" type="submit">Dar de ALta un Nuevo Pokemon </button>
-
+            <button class="alta" type="submit">Dar de Alta un Nuevo Pokemon </button>
+        </form>
     </main>
 </body>
 </html>

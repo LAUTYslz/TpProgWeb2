@@ -26,10 +26,16 @@ if(isset($_POST["usuario"]) && $_POST["pass"]){
 
 function validarUsuario($usuario, $pass)
 {
+    /*
+    $config = parse_ini_file('../config.ini');
+    $servername = $config['usuarios']['servername'];
+    $username = $config['usuarios']['username'];
+    $password = $config['usuarios']['password'];
+    $database = $config['usuarios']['database'];
+    */
     $servername = "localhost";
     $username = "root";
-    $password = "Farma100.";
-
+    $password = "";
     $database = "login";
 
     // Crear conexión

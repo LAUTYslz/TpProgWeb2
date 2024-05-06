@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/modificar-pokemon.css">
     <?php
     session_start();
-    include_once ("../components/hearder-admin.php");
+    include_once ("../components/header-admin-validaciones.php");
     ?>
     <style>
-        body {
+        /*body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -68,7 +70,7 @@
         }
         input[type="submit"]:hover {
             background-color: #555;
-        }
+        }*/
     </style>
 </head>
 <body>
@@ -78,9 +80,15 @@
     <?php
         $id_obtenido = $_POST["id"];
 
+        /*$config = parse_ini_file('../config.ini');
+        $servername = $config['servername'];
+        $username = $config['username'];
+        $password = $config['password'];
+        $database = $config['database'];
+*/
         $servername = "localhost";
         $username = "root";
-        $password = "Farma100.";
+        $password = "";
         $database = "PokemonDB";
 
         // Crear conexión
@@ -98,7 +106,7 @@
         if($result->num_rows>0){
             $row = $result->fetch_assoc();
         ?>
-        <h2>Modificar Pokémon</h2>
+        <h2 class="titulo-modificar">Modificar Pokémon</h2>
         <form class="actualizar" action="actualizarPokemon.php" method="post" enctype="multipart/form-data">
             <!--mostrar id-->
 
@@ -118,13 +126,13 @@
             </select>
             <!--mostrar imagen-->
             <label for="imagen">Imagen:</label><br>
-            <img class="imagen" src="<?php echo $row['imagen']; ?>">
+            <img class="imagen" src="../img/<?php echo $row['imagen']; ?>">
             <input type="text" name="imagen_actual" value="<?php echo $row['imagen']; ?>"><br>
             <!--subir nueva  imagen-->
-            <p>Subir Nueva Imagen</p><br>
+            <label>Subir Nueva Imagen</label><br>
             <input type="file" id="nueva_imagen" name="nueva_imagen" accept="image/*" <?php echo $row['imagen']; ?><br>
 
-            <input type="submit" value="Guardar Cambios">
+            <input class="boton-modificar" type="submit" value="Guardar Cambios">
         </form>
         <?php
             } else {

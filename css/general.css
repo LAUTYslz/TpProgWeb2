@@ -1,0 +1,275 @@
+
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/fondo/fondo_pokemon_2.jpg");
+    background-size: unset;
+}
+
+
+p{
+    text-align: center;
+    font-size: 3vh;
+    color: red;
+    background-color: rgba(255, 255, 255, 0.91);
+
+}
+/*-------------------------------------header------*/
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    height: 50px;
+}
+header h2{
+    font-size: 3vh;
+}
+.header-formulario {
+    display: flex;
+    flex-direction: row;
+    width: 33%;
+    justify-content: space-between;
+    align-items: end;
+}
+.header-formulario  input{
+    width: 20vh;
+    padding: 5px;
+    border-radius: 5px;
+}
+.ingresar{
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.ingresar:hover{
+    scale: 1.1;
+}
+header input[type="text"],
+header input[type="password"] {
+    border: 1px solid #ccc;
+    /*margin-bottom: 7px;
+    margin-right: 10px;
+*/
+}
+/*-------------------------dar de alta------------------------*/
+.dar-de-alta {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+.dar-de-alta label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+.dar-de-alta img.imagen {
+    max-width: 100%;
+    margin-top: 10px;
+}
+.dar-de-alta input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.dar-de-alta input[type="submit"]:hover {
+    background-color: #555;
+}
+
+/*----------------------------------main------*/
+
+main{
+    width: 80%;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.contenedor-busqueda{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3vh 0;
+    background-color: rgba(255, 255, 255, 0.63);
+    width: 40%;
+    padding: 2vh;
+    margin: 3vh auto;
+    border-radius: 20px;
+}
+.container {
+    margin-bottom: 20px;
+}
+
+/*----------------------------------tabla------*/
+.tablaestilo{
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples líneas */
+    margin: auto;
+    justify-content: center;
+    width:100%;
+}
+.tablaestilo table{
+    width: 70%;
+    background-color: #edbe05;
+    border: 3px solid #2020e5;
+    border-radius: 20px;
+    margin-top: 3vh;
+}
+.tablaestilo tr{
+    /*width: 40%;*/
+}
+.tablaestilo div{
+    /*width: calc(13.33% - 20px); /* Calcula el ancho de cada elemento para que haya 3 elementos por fila */
+    margin-bottom: 20px;
+}
+.tablaestilo th,
+.tablaestilo td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px; /* Tamaño de fuente */
+}
+.tablaestilo th {
+    background-color: #f2f2f2;
+    font-weight: bold; /* Negrita para encabezados */
+    /*width: 100%;*/
+}
+.tipo-imagen {
+    /*
+    width: 64px;  /* para que se quede como icono
+    height: 64px;
+    */
+    width: 6vh;
+    height: 6vh;
+}
+.tablaestilo img {
+    max-width: 100px;
+    height: auto;
+    transition: transform 0.3s ease; /* Añade una transición para el efecto de movimiento */
+}
+.tablaestilo img:hover {
+    transform: translateY(-5px); /* Mueve la imagen hacia arriba al pasar el mouse sobre ella */
+}
+
+/* Estilos responsivos */
+/*---------------------------------------------------------------------------RESPONSIVE CELULAR-----------*/
+@media screen and (max-width: 768px) {
+    main{
+        width: 90%;
+    }
+    /* Ajusta el tamaño de la fuente para pantallas más pequeñas */
+    .tablaestilo th,
+    .tablaestilo td {
+        font-size: 2vh;
+        padding: 5px;
+
+    }
+    .contenedor-tabla{
+        width: 100%;
+    }
+
+    .tablaestilo table{
+        width: 100%;
+    }
+    header{
+        padding: 10px 10px;
+    }
+    header img{
+        height: 30px;
+    }
+    h1{
+        font-size: 3vh;
+    }
+    .contenedor-busqueda{
+        align-items: center;
+        width: 90%;
+    }
+    .form-buscar label, .form-buscar button{
+        font-size: 2vh;
+    }
+    .header-formulario {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        align-items: center;
+    }
+    .header-formulario  input{
+        width: 10vh;
+        padding: 5px;
+        font-size: 1.5vh;
+    }
+    header input[type="text"],
+    header input[type="password"] {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 7px;
+        /*margin-right: 10px;
+    */
+    }
+}
+
+/* !--------------RESPONSIVE TABLET -----------*/
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    header{
+        padding: 2vh 1vh ;
+    }
+    main{
+        width: 100%;
+        margin: auto;
+    }
+    .tablaestilo table{
+        width: 60%;
+    }
+    .tablaestilo th,
+    .tablaestilo td {
+        font-size: 2vh;
+    }
+    h1{
+        font-size: 4vh;
+    }
+    .contenedor-busqueda{
+        margin: 1vh 0 3vh;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    .form-buscar label, .form-buscar button{
+        font-size: 2vh;
+    }
+    .header-formulario {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        align-items: center;
+    }
+
+    header img{
+        height: 60px;
+    }
+    .header-formulario  input{
+        width: 10vh;
+        padding: 5px;
+        font-size: 1.5vh;
+    }
+    header input[type="text"],
+    header input[type="password"] {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 7px;
+        /*margin-right: 10px;
+    */
+    }
+
+}

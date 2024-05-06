@@ -1,12 +1,12 @@
 <style>
-    pokemon item{
+    .pokemon item{
         width: calc(33.33% - 10px); /* Calcula el ancho de cada elemento para que haya 3 elementos por fila */
         margin-bottom: 20px; /* Espacio entre filas */
         /* Otros estilos de los elementos, como padding, border, etc. */
     }
     .tipo-imagen {
-        width: 64px;  /* para que se quede como icono*/
-        height: 64px;
+        width: 6vh;  /* para que se quede como icono*/
+        height: 6vh;
 
     }
     .btn {
@@ -42,9 +42,16 @@
 
 </style>
 <?php
+/*
+$config = parse_ini_file('../config.ini');
+$servername = $config['pokemon']['servername'];
+$username = $config['pokemon']['username'];
+$password = $config['pokemon']['password'];
+$database = $config['pokemon']['database'];
+*/
 $servername = "localhost";
 $username = "root";
-$password = "Farma100.";
+$password = "";
 $database = "PokemonDB";
 
 // Crear conexión
@@ -75,6 +82,8 @@ if ($result->num_rows > 0) {
         echo "<td><img src='./img/tipo/" . $tipoImagen . ".png' alt='" . $tipo . "' class='tipo-imagen'></td>";
         echo "<td>" . $row["numero_identificador"] . "</td>";
         echo "</tr>";
+        echo "<tr>";
+
         //boton modificar
         echo "<td>";
         echo "<form action='validaciones/modificarPokemon.php' method='post'>";
@@ -89,6 +98,8 @@ if ($result->num_rows > 0) {
         echo "<input type='submit' value='Dar de Baja' class='btn dar-baja'>";
         echo "</form>";
         echo "</td>";
+        echo "<td></td>";
+        echo "<td></td>";
         echo "</tr>";
     }
 } else {

@@ -1,9 +1,15 @@
 <?php
 session_start();
-
+/*
+$config = parse_ini_file('../config.ini');
+$servername = $config['pokemon']['servername'];
+$username = $config['pokemon']['username'];
+$password = $config['pokemon']['password'];
+$database = $config['pokemon']['database'];
+*/
 $servername = "localhost";
 $username = "root";
-$password = "Farma100.";
+$password = "";
 $database = "PokemonDB";
 
 // Crear conexión

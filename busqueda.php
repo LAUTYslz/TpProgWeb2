@@ -1,24 +1,50 @@
-<style>
-    .tipo-imagen {
-        width: 64px;  /* para que se quede como icono*/
-        height: 64px;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/busqueda.css">
 
-    }
-</style>
+    <title>Pokedex</title>
+    <style>
+        .tipo-imagen {
+            /*
+            width: 64px;  /* para que se quede como icono
+            height: 64px;
+
+            width: 4vh;
+            height: 4vh;
+
+             */
+        }
+    </style>
+</head>
+<body>
 <?php
 
 include_once("components/header.php");
 
-
+?>
+<main>
+<?php
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
 
     $busqueda = htmlspecialchars($_GET['busqueda']); //
 
     // Crear conexión
+    /*
+    $config = parse_ini_file('config.ini');
+
+    $servername = $config['pokemon']['servername'];
+    $username = $config['pokemon']['root'];
+    $password = $config['pokemon']['password'];
+    $database = $config['pokemon']['database'];
+    */
     $servername = "localhost";
     $username = "root";
-    $password = "Farma100.";
+    $password = "";
     $database = "PokemonDB";
 
     $conn = new mysqli($servername, $username, $password, $database);
@@ -42,8 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
         // Verificar si se encontró el Pokémon
         if ($result->num_rows > 0) {
             // Mostrar la tabla solo con el Pokémon filtrado
-            echo "<table border='1'>";
-            echo "<tr><th>Imagen</th><th>Nombre</th><th>Tipo</th><th>Número Identificador</th></tr>";
+            echo "<div class='tablaestilo contenedor-tabla'>";
+            echo "<table border='1' >";
+            echo "<tr><th>Imagen</th><th>Nombre</th><th>Tipo</th><th>Número Identificador</th><th>Descripcion</th></tr>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td><img src='img/" . $row["imagen"] . "' alt='" . $row["nombre"] . "'></td>";
@@ -58,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
                 echo "</tr>";
             }
             echo "</table>";
+            echo "</div>";
         } else {
             $mensaje = urlencode("No se encontró ningún Pokémon con el nombre '$nombre_pokemon'.");
             header("Location: ../index.php?mensaje=$mensaje"); // agragmos el mensaje para que aparezca en el index
@@ -76,3 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
     $conn->close();
 }
     ?>
+</main>
+</body>
+</html>

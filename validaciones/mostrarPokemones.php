@@ -1,14 +1,24 @@
 <style>
     .tipo-imagen {
-        width: 64px;  /* para que se quede como icono*/
+        /*
+        width: 64px;  /* para que se quede como icono
         height: 64px;
-
+*/
     }
 </style>
 <?php
+/*
+$config = parse_ini_file('config.ini');
+$pokemon_config = $config['pokemon'];
+$servername = $pokemon_config['servername'];
+$username = $pokemon_config['username'];
+$password = $pokemon_config['password'];
+$database = $pokemon_config['database'];
+*/
+
 $servername = "localhost";
 $username = "root";
-$password = "Farma100.";
+$password = "";
 $database = "PokemonDB";
 
 // Crear conexión
@@ -27,7 +37,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Output data of each row
     while ($row = $result->fetch_assoc()) {
-        echo "<div class='pokemon'>";
+        //echo "<div class='pokemon'>";
         echo "<tr>";
         echo "<td><img src='img/" . $row["imagen"] . "' alt='" . $row["nombre"] . "'></td>";
         echo " <input type='hidden' name='id' value=' " . $row['numero_identificador'] . "'>";
@@ -39,8 +49,8 @@ if ($result->num_rows > 0) {
         echo "<td><img src='./img/tipo/" . $tipoImagen . ".png' alt='" . $tipo . "' class='tipo-imagen'></td>";
         echo "<td>" . $row["numero_identificador"] . "</td>";
         echo "</tr>";
-        echo "</div>";
-        echo "</div>";
+        //echo "</div>";
+        //echo "</div>";
 
     }
 } else {
