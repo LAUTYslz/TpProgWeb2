@@ -1,24 +1,10 @@
 <?php
 session_start();
-/*
-$config = parse_ini_file('../config.ini');
-$servername = $config['pokemon']['servername'];
-$username = $config['pokemon']['username'];
-$password = $config['pokemon']['password'];
-$database = $config['pokemon']['database'];
-*/
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "PokemonDB";
+include_once("../helper/Database.php");
+include_once ("funcionTipo.php");
+include_once ("../Configuration.php");
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+$database = Configuration::getPokemonDatabase();
 
 // Obtener los valores del formulario
 $numero_identificador = $_POST['numero_identificador'];
@@ -30,12 +16,11 @@ $descripcion = $_POST['descripcion'];
 
 // Verificar si el número de identificador ya existe
 $sql_check = "SELECT * FROM pokemon WHERE numero_identificador = $numero_identificador";
-$result_check = $conn->query($sql_check);
+$resultado_check = $database->query($sql_check);
 
-if ($result_check->num_rows > 0) {
+if (!empty($resultado_check)) {
     $mensaje = urldecode("El numero de identificador ya esta en uso.'$numero_identificador', intente con otro numero");
     header("Location: ../home.php?mensaje=$mensaje"); // Redirigir a alguna página
-
 }
 
 // Verificar si se ha subido una nueva imagen
@@ -50,15 +35,11 @@ if ($_FILES["imagen"]["name"]) {
 // Consulta SQL para INSERTAR datos en la tabla
 $sql = "INSERT INTO pokemon (numero_identificador,imagen,nombre,tipo, descripcion) VALUES ('$numero_identificador', '$ruta_destino', '$nombre', '$tipo', '$descripcion')";
 
-if ($conn->query($sql) === TRUE) {
+
+if ($database->execute($sql)) {
     $mensaje=urldecode("Nuevo POKEMON ha sido creado exitosamente") ;
-
     header("location:../home.php?mensaje=$mensaje");
-
-
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . mysqli_error($database->getError());
 }
-
-$conn->close();
 ?>

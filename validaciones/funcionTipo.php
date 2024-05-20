@@ -12,4 +12,6 @@ function obtenerImagenTipo($tipo) {
             return "electrico";
 
         default:
-            return "default";}}
+            return "default";
+    }
+}

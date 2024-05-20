@@ -1,18 +1,18 @@
 <?php
 session_start();
+include_once("../helper/Database.php");
+include_once ("../Configuration.php");
 
-if(isset($_POST["usuario"]) && $_POST["pass"]){
+if(isset($_POST["usuario"]) && isset($_POST["pass"])){
     $usuario = trim($_POST["usuario"]);
     $pass = trim($_POST["pass"]);
-
-
 
     $esValido = validarUsuario($usuario,$pass);
 
     if ($esValido){
         $_SESSION["usuario"] = $usuario;
         $mensaje = urlencode("Usted ha ingresado en modo-Admin.");
-        header("location:../home.php?mensaje=$mensaje");
+        header("location:../index.php?mensaje=$mensaje&controller=home&action=getPokemones");
         exit();
     }else{
         $mensajeError = urlencode("Usuario o Contraseña incorrecta.");
@@ -26,32 +26,14 @@ if(isset($_POST["usuario"]) && $_POST["pass"]){
 
 function validarUsuario($usuario, $pass)
 {
-    /*
-    $config = parse_ini_file('../config.ini');
-    $servername = $config['usuarios']['servername'];
-    $username = $config['usuarios']['username'];
-    $password = $config['usuarios']['password'];
-    $database = $config['usuarios']['database'];
-    */
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "login";
+    $database = Configuration::getUsuarioDatabase();
+    // Realizar consulta
+    $sql = "SELECT * FROM usuario WHERE usuario = '" . $usuario . "' AND pass = '" . $pass . "'";
+    $result = $database->query($sql);
 
-    // Crear conexión
-    $conn = mysqli_connect($servername, $username, $password, $database);
+    return count($result) == 1;
+    // 1 = TRUE
+    // OTRO = FALSE
 
-    // Verificar la conexión
-    if (!$conn) {
-        die("Error al conectar con la base de datos: " . mysqli_connect_error());
-    }else{
-        // Realizar consulta
-        $sql = "SELECT * FROM usuario WHERE usuario = '" . $usuario . "' && pass = '" . $pass . "'";
-        $result = mysqli_query($conn, $sql);
-
-        return mysqli_num_rows($result) == 1;
-        // 1 = TRUE
-        // OTRO = FALSE
-    }
 }
 

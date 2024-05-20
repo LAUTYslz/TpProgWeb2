@@ -58,6 +58,19 @@ header input[type="password"] {
 */
 }
 /*-------------------------dar de alta------------------------*/
+.alta{
+    position: fixed;
+    top: 50px; /* Ajusta la distancia desde arriba según tu preferencia */
+    margin-top: 100px;
+    right: 100px; /* Ajusta la distancia desde la derecha según tu preferencia */
+    z-index: 1000; /* Ajusta el índice z según sea necesario para asegurarte de que esté por encima de otros elementos */
+    padding: 10px 20px;
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
 .dar-de-alta {
     background-color: #fff;
     padding: 20px;
@@ -162,6 +175,47 @@ main{
 .tablaestilo img:hover {
     transform: translateY(-5px); /* Mueve la imagen hacia arriba al pasar el mouse sobre ella */
 }
+.pokemon item{
+    width: calc(33.33% - 10px); /* Calcula el ancho de cada elemento para que haya 3 elementos por fila */
+    margin-bottom: 20px; /* Espacio entre filas */
+    /* Otros estilos de los elementos, como padding, border, etc. */
+}
+.tipo-imagen {
+    width: 6vh;  /* para que se quede como icono*/
+    height: 6vh;
+
+}
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+.modificar {
+    background-color: #28a745;
+}
+
+.modificar:hover {
+    background-color: #218838;
+}
+.dar-baja {
+    background-color: #dc3545;
+}
+
+.dar-baja:hover {
+    background-color: #c82333;
+}
+
 
 /* Estilos responsivos */
 /*---------------------------------------------------------------------------RESPONSIVE CELULAR-----------*/

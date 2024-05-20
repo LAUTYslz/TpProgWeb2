@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dar de alta un Pokémon</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/dar-de-alta.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/dar-de-alta.css">
 
 
     <?php
     session_start();
-    include_once ("../components/header-admin-validaciones.php");
+    include_once("components/nav-admin.php");
     ?>
     <style>
 
@@ -24,7 +24,7 @@
     <main>
         <h2 class="alta-titulo">NUEVO POKEMON</h2>
         <div class="container cont-dar-alta">
-        <form class="dar-de-alta" action="procesar_alta_pokemon.php" method="post" enctype="multipart/form-data">
+        <form class="dar-de-alta" action="validaciones/procesar_alta_pokemon.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="numero_identificador">Número de Identificador:</label>
                 <input type="text" id="numero_identificador" name="numero_identificador" required>

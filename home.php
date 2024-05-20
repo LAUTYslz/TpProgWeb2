@@ -6,84 +6,24 @@
     <link rel="stylesheet" href="css/general.css">
 
     <title>Pokedex</title>
-    <style>
-        /*
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        p{
-            text-align: center;
-            color: #333333;
-            font-family: "Arial Black";
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header img {
-            height: 50px;
-        }
-        header input[type="text"],
-        header input[type="password"] {
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-right: 10px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table th, table td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-        table th {
-            background-color: #f2f2f2;
-        }
-        */
-        .alta{
-            position: fixed;
-                top: 50px; /* Ajusta la distancia desde arriba según tu preferencia */
-            margin-top: 100px;
-                right: 100px; /* Ajusta la distancia desde la derecha según tu preferencia */
-                z-index: 1000; /* Ajusta el índice z según sea necesario para asegurarte de que esté por encima de otros elementos */
-                padding: 10px 20px;
-                background-color: #007bff; /* Color de fondo del botón */
-                color: #fff; /* Color del texto del botón */
-                border: none;
-                border-radius: 30px;
-                cursor: pointer;
-
-        }
-    </style>
 </head>
 <body>
 
     <?php
     session_start();
-    include_once ("./components/hearder-admin.php");
+    include_once("./components/nav-admin.php");
     if (isset($_GET['mensaje'])) {
 // Recupera el mensaje y decodifica la URL
         $mensaje = urldecode($_GET['mensaje']);
 // Muestra el mensaje
         echo "<p>$mensaje</p>";
     }
-
     ?>
 
     <main>
         <div class="container contenedor-busqueda">
             <h2>Buscar</h2>
-            <form action="busqueda.php" method="GET">
+            <form action="index.php?controller=home&action=busqueda" class="form-buscar" method="GET">
                 <label for="busqueda">Buscar:</label>
                 <input type="text" id="busqueda" name="busqueda">
                 <button type="submit">Buscar</button>
@@ -102,11 +42,49 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php include_once ("validaciones/mostrarPokemonesUsuario.php") ?>
+                <?php
+                if (!empty($pokemones)) {
+
+                    foreach ($pokemones as $pokemon){
+                        echo "<tr>";
+                        echo "<td><img src='img/" . $pokemon["imagen"] . "' alt='" . $pokemon["nombre"] . "'></td>";
+                        echo " <input type='hidden' name='id' value=' " . $pokemon['numero_identificador'] . "'>";
+                        echo "<td><a href='pokemon.php?controller=home&action=verPokemon&id=" . $pokemon["numero_identificador"] . "'>" . $pokemon["nombre"] . "</a></td>";
+                        /* echo "<td>" . $row["tipo"] . "</td>";*/
+                        $tipo = $pokemon["tipo"];
+                        $tipoImagen = obtenerImagenTipo($tipo);
+
+                        echo "<td><img src='./img/tipo/" . $tipoImagen . ".png' alt='" . $tipo . "' class='tipo-imagen'></td>";
+                        echo "<td>" . $pokemon["numero_identificador"] . "</td>";
+                        echo "</tr>";
+                        echo "<tr>";
+
+                        //boton modificar
+                        echo "<td>";
+                        echo "<form action='index.php?controller=home&action=modificar' method='post'>";
+                        echo " <input type='hidden' name='id' value=' " . $pokemon['numero_identificador'] . "'>";
+                        echo "<input type='submit' value='Modificar' class= 'btn modificar'>";
+                        echo "</form>";
+                        echo "</td>";
+                        //boton dar de baja
+                        echo "<td>";
+                        echo "<form action='index.php?controller=home&action=darDeBaja' method='post'>";
+                        echo "<input type='hidden' name='id' value='" . $pokemon["numero_identificador"] . "'>";
+                        echo "<input type='submit' value='Dar de Baja' class='btn dar-baja'>";
+                        echo "</form>";
+                        echo "</td>";
+                        echo "<td></td>";
+                        echo "<td></td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='4'>0 resultados encontrados.</td></tr>";
+                }
+                ?>
                 </tbody>
             </table>
         </div>
-        <form action='validaciones/darDeAltaPokemon.php' method='post'>";
+        <form action='index.php?controller=home&action=darDeAlta' method='post'>";
             <button class="alta" type="submit">Dar de Alta un Nuevo Pokemon </button>
         </form>
     </main>

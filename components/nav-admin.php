@@ -1,6 +1,6 @@
 <header>
     <div>
-        <img src="../img/logo.svg" alt="Logo">
+        <img src="img/logo.svg" alt="Logo">
     </div>
     <h1>Pokedex</h1>
     <?php

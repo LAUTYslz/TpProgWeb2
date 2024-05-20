@@ -7,23 +7,11 @@
     <link rel="stylesheet" href="css/busqueda.css">
 
     <title>Pokedex</title>
-    <style>
-        .tipo-imagen {
-            /*
-            width: 64px;  /* para que se quede como icono
-            height: 64px;
-
-            width: 4vh;
-            height: 4vh;
-
-             */
-        }
-    </style>
 </head>
 <body>
 <?php
 
-include_once("components/header.php");
+include_once("components/nav.php");
 
 ?>
 <main>
@@ -32,6 +20,7 @@ include_once("components/header.php");
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['busqueda'])) {
 
     $busqueda = htmlspecialchars($_GET['busqueda']); //
+
 
     // Crear conexión
     /*
