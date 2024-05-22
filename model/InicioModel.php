@@ -13,3 +13,4 @@ class InicioModel
         return $this->database->query("SELECT imagen, nombre, tipo, numero_identificador FROM pokemon");
     }
 }
+

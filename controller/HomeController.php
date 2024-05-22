@@ -3,14 +3,16 @@
 class HomeController
 {
     private $model;
-    public function __construct($model)
+    private $presenter;
+
+    public function __construct($model, $presenter)
     {
         $this->model = $model;
+        $this->presenter = $presenter;
     }
-
-    public function getPokemones()
+    public function get()
     {
         $pokemones = $this->model->getPokemones();
-        include_once("home.php");
+        $this->presenter->render("view/home.mustache", ["pokemones" => $pokemones]);
     }
 }

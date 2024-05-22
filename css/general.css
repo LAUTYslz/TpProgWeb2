@@ -3,7 +3,7 @@ body{
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url("../img/fondo/fondo_pokemon_2.jpg");
+    background-image: url("../public/img/fondo/fondo_pokemon_2.jpg");
     background-size: unset;
 }
 

@@ -1,10 +1,5 @@
 <?php
-include_once ("config/config.ini");
-include_once ("helper/Database.php");
-include_once ("Router.php");
-
-include_once ("validaciones/funcionTipo.php");
-
+//controlador
 include_once ("controller/InicioController.php");
 include_once ("controller/HomeController.php");
 include_once ("controller/DarDeBajaController.php");
@@ -12,7 +7,7 @@ include_once ("controller/DarDeAltaController.php");
 include_once ("controller/ModificarController.php");
 include_once ("controller/BusquedaController.php");
 include_once ("controller/VerPokemonController.php");
-
+//modelos
 include_once ("model/InicioModel.php");
 include_once ("model/HomeModel.php");
 include_once ("model/DarDeBajaModel.php");
@@ -20,43 +15,50 @@ include_once ("model/DarDeAltaModel.php");
 include_once ("model/ModificarModel.php");
 include_once ("model/BusquedaModel.php");
 include_once ("model/VerPokemonModel.php");
+//helper
+include_once ("helper/Database.php");
+include_once ("helper/Router.php");
+include_once ("helper/Presenter.php");
+include_once ("helper/MustachePresenter.php");
+
+include_once('vendor/vendor/mustache/src/Mustache/Autoloader.php');
 Class Configuration
 {
     // CONTROLLERS--------------------------------------------------------------
     public static function getInicioController()
     {
-        return new InicioController(self::getIncioModel());
+        return new InicioController(self::getIncioModel() ,self::getPresenter());
     }
 
     public static function getHomeController()
     {
-        return new HomeController(self::getHomeModel());
+        return new HomeController(self::getHomeModel() , self:: getPresenter());
     }
 
     public static function getDarDeAltaController()
     {
-        return new DarDeAltaController(self::getDarDeAltaModel());
+        return new DarDeAltaController(self::getDarDeAltaModel(), self::getPresenter());
     }
 
     public static function getDarDeBajaController()
     {
-        return new DarDeBajaController(self::getDarDeBajaModel());
+        return new DarDeBajaController(self::getDarDeBajaModel(), self::getPresenter());
     }
 
     public static function getModificarController()
     {
-        return new ModificarController(self::getModificarModel());
+        return new ModificarController(self::getModificarModel(), self::getPresenter());
     }
 
     public static function getVerPokemonController()
     {
-        return new VerPokemonController(self::getVerPokemonModel());
+        return new VerPokemonController(self::getVerPokemonModel(), self::getPresenter());
 
     }
 
     public static function getBusquedaController()
     {
-        return new BusquedaController(self::getBusquedaModel());
+        return new BusquedaController(self::getBusquedaModel(), self::getPresenter());
 
     }
 
@@ -119,7 +121,7 @@ Class Configuration
 
     public static function getRouter()
     {
-        return new Router("getLaBandaController", "get");
+        return new Router("getInicioController", "get");
     }
 
     private static function getPresenter()

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/modificar-pokemon.css">
+</head>
+<body>
+
+
+<main>
+    {{# pokemonBuscado }}
+        <h2 class="titulo-modificar">Modificar Pokémon</h2>
+        <form class="actualizar" action="actualizarPokemon.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ id }}"><br>
+            <label for="numero_identificador">Numero de Identificador:</label>
+            <input type="text" name="numero_identificador" value="{{ numero_identificador }}"><br>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" value="{{ nombre }}"><br>
+
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo" required>
+                <option value="Hierba" {{# tipoHierbaSelected }}selected{{/ tipoHierbaSelected }}>Hierba</option>
+                <option value="Fuego" {{# tipoFuegoSelected }}selected{{/ tipoFuegoSelected }}>Fuego</option>
+                <option value="Planta" {{# tipoPlantaSelected }}selected{{/ tipoPlantaSelected }}>Planta</option>
+            </select><br>
+
+            <label for="imagen">Imagen:</label><br>
+            <img class="imagen" src="img/{{ imagen }}"><br>
+            <input type="text" name="imagen_actual" value="{{ imagen }}"><br>
+
+            <label>Subir Nueva Imagen</label><br>
+            <input type="file" id="nueva_imagen" name="nueva_imagen" accept="image/*"><br>
+
+            <input class="boton-modificar" type="submit" value="Guardar Cambios">
+        </form>
+    {{/ pokemonBuscado }}
+    {{^ pokemonBuscado }}
+        <p>No se encontró ningún Pokémon con el ID proporcionado.</p>
+    {{/ pokemonBuscado }}
+</main>
+</body>
+</html>

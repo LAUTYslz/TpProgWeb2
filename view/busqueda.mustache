@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/busqueda.css">
+
+    <title>Pokedex</title>
+</head>
+<body>
+<main>
+    {{# pokemones }}
+        <div class="tablaestilo contenedor-tabla">
+            <table border="1">
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Número Identificador</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr>
+                    <td><img src="public/img/{{ imagen }}" alt="{{ nombre }}"></td>
+                    <td>{{ nombre }}</td>
+                    <td><img src="public/img/tipo/{{ tipo }}.png" alt="{{ tipo }}" class="tipo-imagen"></td>
+                    <td>{{ numero_identificador }}</td>
+                    <td>{{ descripcion }}</td>
+                </tr>
+            </table>
+        </div>
+    {{/ pokemones }}
+</main>
+</body>
+</html>

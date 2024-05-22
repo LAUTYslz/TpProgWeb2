@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/general.css">
+    <title>Pokedex</title>
+</head>
+<body>
+<main>
+    <div class="container contenedor-busqueda">
+        <h2>Buscar</h2>
+        <form action="index.php?controller=home&action=busqueda" class="form-buscar" method="GET">
+            <label for="busqueda">Buscar:</label>
+            <input type="text" id="busqueda" name="busqueda">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    <div class="tablaestilo contenedor-tabla">
+        <table>
+            <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Número</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{# pokemones }}
+                <tr>
+                    <td><img src="img/{{ imagen }}" alt="{{ nombre }}"></td>
+                    <td><a href="pokemon.php?controller=home&action=verPokemon&id={{ numero_identificador }}">{{ nombre }}</a></td>
+                    <td>{{ tipo }}</td>
+                    <td>{{ numero_identificador }}</td>
+                    <td>
+                        <form action="index.php?controller=home&action=modificar" method="POST">
+                            <input type="hidden" name="id" value="{{ numero_identificador }}">
+                            <input type="submit" value="Modificar" class="btn modificar">
+                        </form>
+                        <form action="index.php?controller=home&action=darDeBaja" method="POST">
+                            <input type="hidden" name="id" value="{{ numero_identificador }}">
+                            <input type="submit" value="Dar de Baja" class="btn dar-baja">
+                        </form>
+                    </td>
+                </tr>
+            {{/ pokemones }}
+            {{^ pokemones }}
+                <tr><td colspan="5">0 resultados encontrados.</td></tr>
+            {{/ pokemones }}
+            </tbody>
+        </table>
+    </div>
+    <form action="index.php?controller=home&action=darDeAlta" method="POST">
+        <button class="alta" type="submit">Dar de Alta un Nuevo Pokemon</button>
+    </form>
+</main>
+</body>
+</html>
