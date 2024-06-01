@@ -11,19 +11,20 @@ class BusquedaController
         $this->presenter = $presenter;
     }
 
-    public function get()
+    public function getBuscar()
     {
-        // Obtener el nombre buscado desde la URL
-        $nombrePokemonBuscado = isset($_GET['busqueda']) ? $_GET['busqueda'] : '';
+        if (isset($_GET["nombre"])) {
+            $nombre = $_GET["nombre"];
+            // Llamar al método del modelo para buscar por nombre
+            $pokemones = $this->model->getPokemones( $nombre);
+        $this->presenter->render("busqueda", ["pokemones" => $pokemones]);
 
-        // Establecer el nombre buscado en el modelo
-        $this->model->setNombreBuscado($nombrePokemonBuscado);
 
-        // Obtener los Pokémon que coincidan con el nombre buscado
-        $pokemones = $this->model->getPokemones();
 
-        // Renderizar la vista con los resultados
-        $this->presenter->render("view/busqueda.mustache", ["pokemones" => $pokemones]);
-
+    } else {
+        echo "ID de Pokémon vacío.";
     }
+}
+
+
 }

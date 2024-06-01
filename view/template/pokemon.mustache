@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="../../css/general.css">
+    <link rel="stylesheet" href="../../css/pokemon.css">
+    <link rel="stylesheet" href="../../index.php">
+</head>
+<body>
+<main>
+{{# pokemones }}
+    <tr>
+        <td><img src='public/img/{{ imagen }}' alt='{{ nombre }}'></td>
+        <td><a href='/verPokemon/get/{{ numero_identificador }}'>{{ nombre }}</a></td>
+        <td><img src='public/img/tipo/{{ tipo }}.png' alt='{{ tipo }}' class='tipo-imagen'></td>
+        <td>{{ numero_identificador }}</td>
+    </tr>
+{{/ pokemones }}
+
+
+
+
+
+</main>
+</body>
+

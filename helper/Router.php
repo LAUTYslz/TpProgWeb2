@@ -13,6 +13,7 @@ class Router
 
     public function route($controllerName, $methodName)
     {
+
         $controller = $this->getControllerFrom($controllerName);
         $this->executeMethodFromController($controller, $methodName);
     }
@@ -27,6 +28,10 @@ class Router
     private function executeMethodFromController($controller, $method)
     {
         $validMethod = method_exists($controller, $method) ? $method : $this->defaultMethod;
-        call_user_func(array($controller, $validMethod));
-    }
+        // Llamar al método del controlador y pasar el ID del Pokémon como argumento si está presente
+
+            call_user_func(array($controller, $validMethod));
+        }
+
+
 }

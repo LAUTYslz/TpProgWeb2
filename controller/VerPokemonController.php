@@ -12,9 +12,21 @@ class VerPokemonController
         $this->presenter = $presenter;
     }
 
-    public function get()
+    public function getVer()
     {
-        $pokemones = $this->model->getPokemones();
-        include_once("modificarPokemon.mustache");
-    }
+        if (isset($_GET["id"])) {
+            $id_solicitado = $_GET["id"];
+            // Asegúrate de que el ID no esté vacío antes de pasarlo al modelo
+            if (!empty($id_solicitado)) {
+                $pokemones = $this->model->getPokemonById($id_solicitado);
+                $this->presenter->render("view/verPokemonView.mustache", ["pokemones" => $pokemones]);
+
+
+
+            } else {
+                echo "ID de Pokémon vacío.";
+            }
+        }
+
+        }
 }

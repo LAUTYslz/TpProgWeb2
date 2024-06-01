@@ -18,9 +18,9 @@
     <div class="container contenedor-busqueda">
         <!--<h2>Buscar</h2>-->
 
-        <form action="/busqueda/get" class="form-buscar" method="GET">
+        <form action="Busqueda/Buscar"class="form-buscar" method="GET">
             <label for="busqueda">Buscar:</label>
-            <input type="text" id="busqueda" name="busqueda" >
+            <input type="text" id="nombre" name="nombre" >
             <button type="submit">Buscar</button>
         </form>
 
@@ -42,7 +42,7 @@
             {{# pokemones }}
                 <tr>
                     <td><img src='public/img/{{ imagen }}' alt='{{ nombre }}'></td>
-                    <td><a href='pokemon.php?action=verPokemon&id={{ numero_identificador }}'>{{ nombre }}</a></td>
+                    <td><a href='?controller=VerPokemon&action=getVer&id={{ numero_identificador }}'>{{nombre}}</a></td>
                     <td><img src='public/img/tipo/{{ tipo }}.png' alt='{{ tipo }}' class='tipo-imagen'></td>
                     <td>{{ numero_identificador }}</td>
                 </tr>

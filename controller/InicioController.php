@@ -14,9 +14,8 @@ class InicioController
     public function get()
     {
         $pokemones = $this->model->getPokemones();
-        $this->presenter->render("view/inicioview.mustache", ["pokemones" => $pokemones]);
+        $this->presenter->render("inicioview", ["pokemones" => $pokemones]);
 
     }
-
 
 }

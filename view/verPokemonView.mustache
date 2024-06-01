@@ -1,7 +1,27 @@
-<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-    <h2 class="w3-wide">Presentaciones</h2>
-    <form method="post" action="/busqueda/buscar">
-        <input name="nombre_buscado">
-        <button type="submit">Crear</button>
-    </form>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+</head>
+<body>
+
+
+<main>
+    <div class="pokemon-details">
+        {{# pokemones }}
+            <tr>
+                <td><img src='public/img/{{ imagen }}' alt='{{ nombre }}'></td>
+                <td>{{ numero_identificador }}</td>
+                <td>{{ nombre }}</td>
+                <td>{{ descripcion }}</td>
+                <td><img src='public/img/tipo/{{ tipo }}.png' alt='{{ tipo }}' class='tipo-imagen'></td>
+                <td>{{ numero_identificador }}</td>
+            </tr>
+        {{/ pokemones }}
+    </div>
+</main>
+
+</body>
+</html>
